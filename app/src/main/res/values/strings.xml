@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BeautyWave</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="beauty_wave">BeautyWave</string>
+    <string name="search">Buscar</string>
+    <string name="hide_gallery">Ocultar Galería</string>
+    <string name="disponibles">Disponibles</string>
+    <string name="todos">Todos</string>
+    <string name="ordenar_por_precio">Ordenar por Precio</string>
+    <string name="productos_disponibles">Productos Disponibles</string>
+    <string name="buy_it">Comprar</string>
+    <string name="agregar_a_carrito">Agregar a Carrito</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="estado">Estado:</string>
+    <string name="categor_a">Categoría:</string>
+    <string name="comprar">Comprar</string>
+    <string name="cantidad">cantidad</string>
+    <string name="_1">1</string>
+    <string name="ordena_por_whatsapp">Ordena por WhatsApp</string>
+</resources>
