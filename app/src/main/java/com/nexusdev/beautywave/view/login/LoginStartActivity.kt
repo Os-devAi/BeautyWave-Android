@@ -54,7 +54,7 @@ class LoginStartActivity : AppCompatActivity() {
 
     private fun clicks() {
         binding.let {
-            it.txtContinueAsGuest.setOnClickListener {
+            it.btnSignUp.setOnClickListener {
                 val i = Intent(this, MainActivity::class.java)
                 startActivity(i)
             }

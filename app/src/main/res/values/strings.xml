@@ -19,4 +19,11 @@
     <string name="cantidad">cantidad</string>
     <string name="_1">1</string>
     <string name="ordena_por_whatsapp">Ordena por WhatsApp</string>
+    <string name="correo">Correo:</string>
+    <string name="apellido">Apellido:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="direcci_n">Dirección:</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="start">Iniciar</string>
 </resources>
