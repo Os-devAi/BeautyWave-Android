@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -54,12 +56,22 @@ class MainActivity : AppCompatActivity() {
         //Mostrar la galería
         showImagesGallery()
         getAllActiveData()
+        setupSearchView()
         clicks()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getAllActiveData()
+    private fun setupSearchView() {
+        val searchView = binding.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter(newText.orEmpty())
+                return true
+            }
+        })
     }
 
     @SuppressLint("SetTextI18n")
@@ -82,6 +94,9 @@ class MainActivity : AppCompatActivity() {
             }
             it.btnAll.setOnClickListener {
                 getAllData()
+            }
+            it.btnMenu.setOnClickListener {
+                Toast.makeText(this, "Función no disponible", Toast.LENGTH_SHORT).show()
             }
         }
     }
