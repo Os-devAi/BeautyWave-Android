@@ -31,7 +31,6 @@ class ProductsAdapter(private val originalProductsList: List<ProductsModel>) :
                 .with(img)
                 .load(imgUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.cosmetics_one)
                 .into(img)
         }
     }

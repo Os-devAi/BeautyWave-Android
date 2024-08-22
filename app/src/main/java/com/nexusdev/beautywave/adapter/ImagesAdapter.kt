@@ -29,7 +29,6 @@ class ImagesAdapter(private val imagesList: List<ImagesModel>) :
         val imageItem = imagesList[position]
         Glide.with(holder.itemView.context)
             .load(imageItem.imagesUrl)
-            .placeholder(R.drawable.cosmetics_one)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.imageView)
     }

@@ -60,6 +60,16 @@ class MainActivity : AppCompatActivity() {
         clicks()
     }
 
+    override fun onPause() {
+        super.onPause()
+        firestoreListener.remove()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getAllActiveData() // Reactivar listener
+    }
+
     private fun setupSearchView() {
         val searchView = binding.searchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -150,8 +160,21 @@ class MainActivity : AppCompatActivity() {
 
                     when (snapshot.type) {
                         DocumentChange.Type.ADDED -> prodList.add(product)
-                        DocumentChange.Type.MODIFIED -> getAllActiveData()
-                        else -> {}
+                        DocumentChange.Type.MODIFIED -> {
+                            val index = prodList.indexOfFirst { it.id == product.id }
+                            if (index != -1) {
+                                prodList[index] = product
+                                adapter.notifyItemChanged(index)
+                            }
+                        }
+
+                        DocumentChange.Type.REMOVED -> {
+                            val index = prodList.indexOfFirst { it.id == product.id }
+                            if (index != -1) {
+                                prodList.removeAt(index)
+                                adapter.notifyItemRemoved(index)
+                            }
+                        }
                     }
                 }
 
@@ -183,8 +206,21 @@ class MainActivity : AppCompatActivity() {
 
                     when (snapshot.type) {
                         DocumentChange.Type.ADDED -> prodList.add(product)
-                        DocumentChange.Type.MODIFIED -> getAllActiveData()
-                        else -> {}
+                        DocumentChange.Type.MODIFIED -> {
+                            val index = prodList.indexOfFirst { it.id == product.id }
+                            if (index != -1) {
+                                prodList[index] = product
+                                adapter.notifyItemChanged(index)
+                            }
+                        }
+
+                        DocumentChange.Type.REMOVED -> {
+                            val index = prodList.indexOfFirst { it.id == product.id }
+                            if (index != -1) {
+                                prodList.removeAt(index)
+                                adapter.notifyItemRemoved(index)
+                            }
+                        }
                     }
                 }
 
@@ -215,8 +251,21 @@ class MainActivity : AppCompatActivity() {
 
                 when (snapshot.type) {
                     DocumentChange.Type.ADDED -> prodList.add(product)
-                    DocumentChange.Type.MODIFIED -> getAllActiveData()
-                    else -> {}
+                    DocumentChange.Type.MODIFIED -> {
+                        val index = prodList.indexOfFirst { it.id == product.id }
+                        if (index != -1) {
+                            prodList[index] = product
+                            adapter.notifyItemChanged(index)
+                        }
+                    }
+
+                    DocumentChange.Type.REMOVED -> {
+                        val index = prodList.indexOfFirst { it.id == product.id }
+                        if (index != -1) {
+                            prodList.removeAt(index)
+                            adapter.notifyItemRemoved(index)
+                        }
+                    }
                 }
             }
 
